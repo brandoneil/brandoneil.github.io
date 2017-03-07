@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Brew Calculator</title>
+<style type="text/css">
+ body {
+ font-family: 'Poppins', sans-serif;
+ background-color:#E0F2F1
+}
+  input {
+    font-family: 'Poppins', sans-serif;
+    font-weight:700;
+    margin:0 auto;
+    border-style: solid;
+    border-color:#00796B;
+    border-width: 0px 0px 3px 0px;
+    color:#C37F00;
+    font-size:6vw;
+    text-align:center;
+    width:20vw;
+    outline:none;
+    background:transparent;
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+  select {
+    font-family: 'Poppins', sans-serif;
+    border-style: solid;
+    border-width: 0px;
+    color:#C37F00;
+    background:transparent;
+    font-size:6vw;
+    font-weight:700;
+    text-align:center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    outline:none;
+
+  }
+  option {
+    text-align:center;
+  }
+  h2 {
+    font-weight:400;
+    font-size:7vw;
+    color:#C37F00;
+    letter-spacing: .6vw;
+    font-family: 'Poppins', sans-serif;
+  }
+  p {
+    font-size:5vw;
+    line-height:12vw;
+    color:#00796B;
+    text-align:center;
+  }
+  .container {
+    margin:0 auto;
+    width:80%;
+  }
+  #title {
+    text-align: center;
+  }
+  #navbar {
+    padding-top:7vw;
+  }
+  ul {
+    text-align:center;
+    margin: 0px auto;
+    padding:0px;
+    width:100%;
+  }
+  li {
+    list-style: none;
+    display:inline;
+    font-size:4vw;
+    text-align: right;
+    font-family:'Poppins', sans-serif;
+  }
+  a {
+    text-decoration: none;
+    color:#00796B;
+    transition: color 0.5s ease;
+  }
+  a:hover {
+    color:#C37F00;
+  }
+  #navbar-link {
+    padding-left: 6vw;
+    padding-right:0;
+  }
+  #ad {
+    padding-top:10px;
+    max-width: 100%;
+    max-height: 100%
+  }
+  #head-space {
+    height:10vw;
+    margin: 0 auto;
+  }
+  #logo {
+    font-weight:900;
+    font-family: 'Poppins', sans-serif;
+    text-align:left;
+    letter-spacing: .2vw;
+    text-align:center;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+<link rel="manifest" href="https://drive.google.com/uc?export=download&id=0Bx_w5Xu2bfxOOHZzUm51N0dzaTA">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="192x192" href="http://placehold.it/192x192">
+</script>
+</head>
+
+<body>
+
+  <div class="container">
+
+
+    <ul id="navbar">
+      <li id="logo"><a href="#">BGC</a></li>
+      <li id="navbar-link"><a href="#">About</a></li>
+      <li id="navbar-link"><a href="#">Tools</a></li>
+      <li id="navbar-link"><a href="#">Donate</a></li>
+    </ul>
+
+    <div id="head-space"></div>
+
+    <h2 id="title">Brew Good Coffee</h2>
+
+    <p>
+      I'm brewing up a batch of
+    </p>
+
+    <p>
+      <select id="r" onchange="convert('f')">
+    </p>
+
+    <p>
+    <option value="13">robust [1:13]</option>
+    <option value="14">hearty [1:14]</option>
+    <option value="15">strong [1:15]</option>
+    <option value="16" selected="selected">regular [1:16]</option>
+    <option value="17">mild [1:17]</option>
+    <option value="18">weak [1:18]</option>
+    <option value="19">faint [1:19]</option>
+    </select> coffee
+  </p>
+
+  <p>
+    <input id="c" type="number" onkeyup="convert('C')" onClick="this.select('16');" value="16"> gr of coffee
+  </p>
+
+  <p>
+    <input id="f" type="number" onkeyup="convert('F')" onClick="this.select('256');" value="256"> ml of water
+  </p>
+  </div>
+
+<script>
+function convert(degree) {
+    var x;
+    if (degree == "C") {
+        x = document.getElementById("c").value * document.getElementById("r").value;
+        document.getElementById("f").value = Math.round(x);
+    } else {
+        x = document.getElementById("f").value / document.getElementById("r").value;
+        document.getElementById("c").value = Math.round(x);
+    }
+}
+</script>
+
+</body>
+</html>
