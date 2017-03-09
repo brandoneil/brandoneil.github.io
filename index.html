@@ -182,7 +182,7 @@
   </div>
 
 <script>
-function convert(degree) {
+function convert(coffee) {
     var x;
     if (coffee == "C") {
         x = document.getElementById("c").value * document.getElementById("r").value;
@@ -190,6 +190,7 @@ function convert(degree) {
     } else {
         x = document.getElementById("f").value / document.getElementById("r").value;
         document.getElementById("c").value = Math.round(x * 10) / 10;
+
     }
 }
 </script>
