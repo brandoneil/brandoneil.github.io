@@ -1,167 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Brew Calculator</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>BGCC</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="made-by">
+          <h4>Brew Good Coffee Calculator</h4>
+        </div>
+      </header>
 
-  <!-- CSS Reset -->
-  <link rel="stylesheet" href="https://brandoneil.github.io/normalize.css">
+      <main>
+        <div class="calculator">
+          <div class="calculator-ratio">
+            <h2>BREW : RATIO</h2>
+            <br />
+            <center><input
+              id="r"
+              type="number"
+              onkeyup="convert('F')"
+              onClick="this.select('256');"
+              value="16.66"
+            />
+            <span> : 1</span>
+          </div></center>
 
-  <!-- Milligram CSS minified -->
-  <link rel="stylesheet" href="https://brandoneil.github.io/milligram.css">
+          <div class="calculator-calc">
+            <br />
+            <input
+              id="f"
+              type="number"
+              onkeyup="convert('F')"
+              onClick="this.select('256');"
+              value="1000"
+            /><span>ml<br />water</span>
+          </div>
+          <div class="calculator-calc">
+            <br />
+            <input
+              id="c"
+              type="number"
+              onkeyup="convert('C')"
+              onClick="this.select('16');"
+              value="60"
+            /><span>gr<br />coffee</span>
+          </div>
+        </div>
+      </main>
 
-  <!-- You should properly set the path from the main file. -->
-  
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-83242407-2', 'auto');
-  ga('send', 'pageview');
-
-  </script>
-
-  <style type="text/css">
-  #navbar {
-    margin: 0 auto;
-    position:relative;
-    top:0px;
-    padding: 10px 0px 10px 0px;
-    list-style: none;
-    background-color: gray;
-    width:100%;
-    border-style: solid;
-    border-color: #000;
-    border-width: 0px 0px 2px 0px;
-
-  }
-  li {
-    display:inline;
-    text-align: cneter;
-    color:white;
-    font-weight:900;
-    padding: 0px 10px 0px 10px;
-    text-align:center;
-  }
-.opener-background{
-  background-image:url('https://brandoneil.github.io/background.jpg');
-  background-size:cover;
-  padding:50px;
-  background-position: center;
-  color:white;
-  background-color:gray;
-}
-
-  </style>
-
-</head>
-
-<body>
-<div class="opener-background">
-  <div class="container">
-
-
-
-<!-- Opener Section -->
-<center><h1><b>Brew Good Coffee</b></h1></center>
-  <div class="row" align="center">
-    <div class="column">
-
+      <script>
+        function convert(coffee) {
+          var x;
+          if (coffee == "C") {
+            x =
+              document.getElementById("c").value *
+              document.getElementById("r").value;
+            document.getElementById("f").value = Math.round(x * 10) / 10;
+          } else {
+            x =
+              document.getElementById("f").value /
+              document.getElementById("r").value;
+            document.getElementById("c").value = Math.round(x * 10) / 10;
+          }
+        }
+      </script>
     </div>
-  </div>
-
-  <div class="row" align="center">
-
-    <div class="column">
-
-      <center><h5>Welcome to Brew Good Coffee! A little site dedicated to making coffee more accessible and repeatable.
-        Below you'll see a brew ratio calculator. This will help you determine your brew strength, as well as the amount of water
-        and ground coffee needed for your <em>perfect cup</em>. Before you get started make sure you have a proper <a href="https://www.amazon.com/gp/product/B001RF3XJ2/ref=as_li_tl?ie=UTF8&tag=brewgoodcoffe-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B001RF3XJ2&linkId=3e8a57ab1c4d32464e093633eb0e0620"><b>gram scale</b></a>
-      and while you're at it you might as well get a suitable <a href="https://www.amazon.com/gp/product/B00LW8122Y/ref=as_li_tl?ie=UTF8&tag=brewgoodcoffe-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B00LW8122Y&linkId=68a58cb873823f667e54dea072554abf"><b>grinder</b></a>. Both of these tools are highly reccomended and will make a significant
-    difference in the cup. Now get brewing and enjoy!</h5></center>
-
-    </div>
-
-  </div>
-
-</div>
-</div>
-<div class="container">
-
-  <br>
-
-  <!-- Calculator Section -->
-
-  <div class="row">
-
-
-    <div class="column">
-
-      <center><h3><b>My Brew Strength</b></h3></center>
-      <p>Select a brew strength. Starting with "Regular" is probably your best bet.
-      <h3>
-      <select class="dropdown" id="r" onchange="convert('f')" text-align="center">
-        <option value="13">Robust [1:13]</option>
-        <option value="14">Hearty [1:14]</option>
-        <option value="15">Full [1:15]</option>
-        <option value="16" selected="selected">Regular [1:16]</option>
-        <option value="17">Mild [1:17]</option>
-        <option value="18">Weak [1:18]</option>
-        <option value="19">Faint [1:19]</option>
-      </select>
-
-    </div>
-
-
-    <div class="column">
-
-      <center><h3><b>Mililiters of Water</b></h3></center>
-      <p>If you're looking to brew a specific amount of coffee, start here.</p>
-      <input id="f" type="number" onkeyup="convert('F')" onClick="this.select('256');" value="256">
-
-    </div>
-
-    <div class="column">
-
-      <center><h3><b>Grams of Coffee</b></h3></center>
-      <p>If you're planning on using a specific amount of coffee, start here.<p>
-      <input id="c" type="number" onkeyup="convert('C')" onClick="this.select('16');" value="16">
-
-    </div>
-  </div>
-
-<!-- How-to Section -->
-
-
-  <div class="row">
-    <div class="column">
-      <h4>Directions</h4>
-      <p>There a couple ways to use this calculator. A good starting point is selecting your brew strength an then entering the amount of coffee you want to brew in the <em>water</em> section. But if you're working with a specific amount of coffee then enter the amount of coffee you have left/want to use. After you've entered in either value the other will update based on the "Brew Strength" you selected.</p>
-    </div>
-  </div>
-
-</div>
-</div>
-
-
-<script>
-function convert(coffee) {
-    var x;
-    if (coffee == "C") {
-        x = document.getElementById("c").value * document.getElementById("r").value;
-        document.getElementById("f").value = Math.round(x * 10) / 10;
-    } else {
-        x = document.getElementById("f").value / document.getElementById("r").value;
-        document.getElementById("c").value = Math.round(x * 10) / 10;
-
-    }
-}
-</script>
-
-</body>
+  </body>
 </html>
