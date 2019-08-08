@@ -3,35 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <title>BGCC</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,500&display=swap" rel="stylesheet">
+
 
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="container">
       <header>
-        <div class="made-by">
-          <h4>Brew Good Coffee Calculator</h4>
+        <div class="logo">
+          <center><img src="./bgc-logo.svg"></center>
         </div>
       </header>
 
       <main>
         <div class="calculator">
-          <div class="calculator-ratio">
-            <h2>BREW : RATIO</h2>
-            <br />
-            <center><input
-              id="r"
-              type="number"
-              onkeyup="convert('F')"
-              onClick="this.select('256');"
-              value="16.66"
-            />
-            <span> : 1</span>
-          </div></center>
+          
 
           <div class="calculator-calc">
             <br />
@@ -41,7 +28,7 @@
               onkeyup="convert('F')"
               onClick="this.select('256');"
               value="1000"
-            /><span>ml<br />water</span>
+            /><div class="measurement">ml<br />water</div>
           </div>
           <div class="calculator-calc">
             <br />
@@ -50,8 +37,27 @@
               type="number"
               onkeyup="convert('C')"
               onClick="this.select('16');"
-              value="60"
-            /><span>gr<br />coffee</span>
+              value="62.5"
+            /><div class="measurement">gr<br />coffee</div>
+          </div>
+          
+          <div class="calculator-ratio">
+            <h2>BREW   RATIO</h2><br>
+            <center><input
+              id="r"
+              type="range"
+              min="14"
+              max="18"
+              onchange="convert('F');"
+              onClick="this.select('256');"
+            /></center>
+            <ul class="ratios">
+              <li>14:1</li>
+              <li>15:1</li>
+              <li>16:1</li>
+              <li>17:1</li>
+              <li>18:1</li>
+            </ul>
           </div>
         </div>
       </main>
@@ -70,6 +76,9 @@
               document.getElementById("r").value;
             document.getElementById("c").value = Math.round(x * 10) / 10;
           }
+        }
+        function updateTextInput(val) {
+          document.getElementById('textInput').value=val; 
         }
       </script>
     </div>
