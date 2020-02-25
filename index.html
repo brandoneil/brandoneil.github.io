@@ -1,86 +1,67 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>BGCC</title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,500&display=swap" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:400i,900i&display=swap" rel="stylesheet">
+    <title>Easy Coffee Ratios</title>
+</head>
+<body>
     <div class="container">
-      <header>
-        <div class="logo">
-          <center><img src="/bgc-logo.svg"></center>
+        
+        <nav>
+            <div class="logo">
+                <h2>BREW GOOD COFFEE</h2>
+            </div>
+        </nav>
+
+       
+
+        <div class="liters">
+         <div class="water" id="water">300</div>
+         <div class="li-text">milliliters of water</div>
         </div>
-      </header>
 
-      <main>
-        <div class="calculator">
-          
-
-          <div class="calculator-calc">
-            <br />
-            <input
-              id="f"
-              type="number"
-              onkeyup="convert('F')"
-              onClick="this.select('256');"
-              value="1000"
-            /><div class="measurement">ml<br />water</div>
-          </div>
-          <div class="calculator-calc">
-            <br />
-            <input
-              id="c"
-              type="number"
-              onkeyup="convert('C')"
-              onClick="this.select('16');"
-              value="62.5"
-            /><div class="measurement">gr<br />coffee</div>
-          </div>
-          
-          <div class="calculator-ratio">
-            <h2>BREW   RATIO</h2><br>
-            <center><input
-              id="r"
-              type="range"
-              min="14"
-              max="18"
-              onchange="convert('F');"
-              onClick="this.select('256');"
-            /></center>
-            <ul class="ratios">
-              <li>14:1</li>
-              <li>15:1</li>
-              <li>16:1</li>
-              <li>17:1</li>
-              <li>18:1</li>
-            </ul>
-          </div>
+        <div class="liters">
+            <div class="water" id="coffee">18</div>
+            <div class="li-text">grams of coffee</div>
         </div>
-      </main>
 
-      <script>
-        function convert(coffee) {
-          var x;
-          if (coffee == "C") {
-            x =
-              document.getElementById("c").value *
-              document.getElementById("r").value;
-            document.getElementById("f").value = Math.round(x * 10) / 10;
-          } else {
-            x =
-              document.getElementById("f").value /
-              document.getElementById("r").value;
-            document.getElementById("c").value = Math.round(x * 10) / 10;
-          }
-        }
-        function updateTextInput(val) {
-          document.getElementById('textInput').value=val; 
-        }
-      </script>
+        
+
+    <div class="cups">
+        
+        <div class="explainer">
+            How many cups of coffee are you brewing?
+        </div>
+        
+        <div class="volume">
+            <input AUTOFOCUS type="button" id="1cup" name="ratio" value="1" Checked onClick="water('300');coffee('18')">
+            <input type="button" id="2cup" name="ratio" value="2" onClick="water('600');coffee('36')">
+        </div>
+        <div class="volume">
+            <input type="button" id="3cup" name="ratio" value="3" onClick="water('900');coffee('54')">
+            <input type="button" id="4cup" name="ratio" value="4" onClick="water('1,200');coffee('72')">
+        </div>
+        
+        <div class="by-me">made with &lt;3 by <a href="https://dribbble.com/brandoneil">brandoneil</a></div>
+
     </div>
-  </body>
+
+        
+</div>
+
+<script type="text/javascript">
+    function water(setting) {
+        myOption = setting;
+        document.getElementById("water").innerHTML = myOption;
+    }
+    function coffee(setting) {
+        myOption = setting;
+        document.getElementById("coffee").innerHTML = myOption;
+    }
+</script>
+
+</body>
 </html>
